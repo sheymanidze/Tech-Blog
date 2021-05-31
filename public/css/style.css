@@ -3,3 +3,16 @@ body {
   background-size: cover;
   background-position: center;
 }
+
+.column1 {
+  flex:1;
+}
+
+.code-card {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  padding:1rem;
+  width: 70%;
+  margin-left: 17.4%;
+}
