@@ -39,32 +39,36 @@
       </ul>
     </div>
   </nav>
-  <div class="login-card">
-    <p class="sign" align="center">Sign in</p>
-    <form class="form1">
-      <input class="un " type="text" align="center" placeholder="Username">
-      <input class="pass" type="password" align="center" placeholder="Password">
-      <a class="submit" align="center">Sign in</a>
-      <p class="forgot" align="center"><a href="#">
-          <font color="#d7b3dd">Forgot Password?</font>
-      </p>
-      <p class="register" align="center"><a href="#">
-          <font color="#d7b3dd">Register</font>
-      </p>
-    </form>
-  </div>
-
-  <div class="signup-card">
-    <p class="sign" align="center">Sign up</p>
-    <form class="form1">
-      <input class="un " type="text" align="center" placeholder="Username">
-      <input class="pass" type="email" align="center" placeholder="Email">
-      <input class="pass" type="password" align="center" placeholder="Password">
-      <a class="submit" align="center">Sign up</a>
-    </form>
-  </div>
+  <form action="#" class="sign-in-form">
+    <div class="login-card">
+      <p class="sign" align="center">Sign in</p>
+      <form class="form1">
+        <input id="username-login" class="un " type="text" align="center" placeholder="Username">
+        <input id="password-login" class="pass" type="password" align="center" placeholder="Password">
+        <a type="submit" class="submit" align="center">Sign in</a>
+        <p class="forgot" align="center"><a href="#">
+            <font color="#d7b3dd">Forgot Password?</font>
+        </p>
+        <p class="register" align="center"><a href="#">
+            <font color="#d7b3dd">Register</font>
+        </p>
+      </form>
+    </div>
+  </form>
+  <form class="sign-up-form">
+    <div class="signup-card">
+      <p class="sign" align="center">Sign up</p>
+      <form class="form1">
+        <input id="#username-signup" class="un " type="text" align="center" placeholder="Username">
+        <input id="#email-signup" class="pass" type="email" align="center" placeholder="Email">
+        <input id="#password-signup" class="pass" type="password" align="center" placeholder="Password">
+        <a type="submit" class="submit" align="center">Sign up</a>
+      </form>
+    </div>
+  </form>
 
   <footer>© 2021 Made with ♡ </footer>
+  <script src="./public/js/login.js"></script>
 
 </body>
 
