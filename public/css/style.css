@@ -17,6 +17,8 @@ body {
 
 .column1 {
   flex:1;
+  margin-top: 5%;
+ 
 }
 
 .code-card {
@@ -26,8 +28,35 @@ body {
   padding:1rem;
   width: 70%;
   margin-left: 17.4%;
+  
+}
+
+.card{
+  border: solid 3px;
+}
+
+.welcome {
+  text-align: center;
+}
+
+h1 {
+  background: -webkit-linear-gradient(#fcef7a,rgb(241, 241, 12),#c648d6, #5a86e4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h4 {
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
 }
 
 footer {
   text-align:center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;           
+
 }

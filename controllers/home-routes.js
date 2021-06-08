@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
     return;
 
   }
-  res.render("main", {
+  res.render("homepage", {
   });
 });
 
