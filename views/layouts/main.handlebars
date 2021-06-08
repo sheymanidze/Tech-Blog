@@ -31,7 +31,7 @@
         </li>
         {{#if logged_in}}
         <li class="nav-item">
-          <a class="nav-link disabled" href="/logout">Logout</a>
+          <a class="nav-link disabled" id="logout">Logout</a>
         </li>
         {{else}}
         <li class="nav-item">
@@ -47,8 +47,9 @@
 
 
   <footer>© 2021 Made with ♡ </footer>
-
-  <script src="/js/login.js"></script>
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 
 </body>
 

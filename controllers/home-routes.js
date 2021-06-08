@@ -11,4 +11,21 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/home');
+    return;
+  }
+  res.render("signup", {
+  });
+});
+
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/api/users/login');
+    return;
+  }
+  res.render('login')
+})
+
 module.exports = router;
