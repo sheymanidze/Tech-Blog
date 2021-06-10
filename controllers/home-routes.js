@@ -70,6 +70,44 @@ router.get('/newpost', (req, res) => {
   res.render('createpost');
 });
 
+//dasboard
+router.get('/dashboard', (req, res) => {
+  Post.findAll({
+    where: {
+      user_id: req.session.user_id
+    },
+    attributes: [
+      'id',
+      'title',
+      'content'
+    ],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Comments,
+        attributes: ['id', 'user_id', 'post_id', 'comments_text'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      }
+    ]
+  })
+    .then(dbPostData => {
+      const post = dbPostData.map(post => post.get({ plain: true }));
+      console.log(post)
+      res.render('dashboard', {
+        post,
+        loggedIn: req.session.loggedIn
+      });
+    }).catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 // router.get('/home', (req, res) => {
 //   Post.findAll({
 //     attributes: [

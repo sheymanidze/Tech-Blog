@@ -1,12 +1,19 @@
 <div class="post">
   <figure class="card code-card">
-    <a href="/home/post/{{id}}">{{title}}</a>
-    <span>{{user.username}}</span>
     <div>
-      <p>{{content}}</p>
+      <h3 style="color: #5a86e4; text-align:center;">{{title}}</h3>
     </div>
-
-    <a href="/home/post/{{id}}">{{comments}}</a>
+    <br>
+    <div>
+      <p style="text-align:center;">{{content}}</p>
+    </div>
+    <div>
+      <span>By: {{user.username}}</span>
+    </div>
+    <br>
+    <div>
+      <a style="margin-left: 75%; color: rgb(215, 179, 221);" href=" /home/post/{{id}}">{{comments}}</a>
+    </div>
 
   </figure>
 </div>
