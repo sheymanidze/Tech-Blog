@@ -1,27 +1,31 @@
-<div>
-  <h2>Welcome, {{session.username}}!</h2>
+<div class="newP">
+  <h1>Welcome, {{user.username}}!</h1>
 </div>
 
-<div>
-  <h3>Create A New Post</h3>
+<div class="create">
+  <h2>Create A New Post</h2>
 </div>
+<form class="createPost">
+  <div class="column1">
+    <div class="card code-card">
+      <label class="labelText" for="post-title">Title:</label>
+      <div class="input-field">
+        <textarea style="width: 75% !important; height: 50px !important; font-size: 20px !important;" class="title"
+          type="text" id="post-title" name="post-name"></textarea>
+      </div>
 
-<form class="form new-post-form">
-  <div class="form-group">
-    <label for="post-name">Title:</label>
-    <input class="form-input" type="text" id="post-name" name="post-name" />
-  </div>
-  <div class="form-group">
-    <label for="post-desc">Content:</label>
-    <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Create</button>
+      <div class="input-field">
+        <label class="newContent" for="new-content">Content: </label>
+        <textarea class="form-input" id="contentNew" type="text"></textarea>
+      </div>
+      <div class="">
+        <input style="margin-left: 40%;" id="create" type="submit" value="Create" class="submit"></input>
+      </div>
+    </div>
   </div>
 </form>
-</div>
 
-{{#if projects.length}}
+{{!-- {{#if post.length}}
 <div class="col-md-6 project-list">
   <h3>Current Posts:</h3>
 
@@ -37,4 +41,4 @@
   {{/each}}
 </div>
 {{/if}}
-</div>
+</div> --}}

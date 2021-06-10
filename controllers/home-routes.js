@@ -63,6 +63,8 @@ router.get("/home", async (req, res) => {
   }
 });
 
+
+//view all posts
 router.get('/all', async (req, res) => {
   if (!req.session.user_id) {
     res.redirect("/")
@@ -87,7 +89,7 @@ router.get('/all', async (req, res) => {
 
 });
 
-
+//new post
 router.get('/newpost', (req, res) => {
   if (!req.session.user_id) {
     res.redirect("/")
@@ -166,6 +168,29 @@ router.get('/dashboard', (req, res) => {
 //     res.status(500).json(err);
 //   });
 // });
+
+router.get('/edit', (req, res) => {
+  if (!req.session.user_id) {
+    res.redirect("/")
+  }
+  res.render('postedit');
+});
+
+//view one post
+router.get("/singlepost/:id", async (req, res) => {
+  if (!req.session.user_id) {
+    res.redirect("/")
+  }
+  try {
+    const postData = await Post.findByPk(req.params.id);
+    const singlePostData = postData.get({ plain: true });
+    res.render('singlepost', {
+      ...singlePostData,
+    });
+  } catch (err) {
+    console.log(err)
+  }
+});
 
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {

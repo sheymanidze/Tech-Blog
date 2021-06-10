@@ -24,6 +24,7 @@ body {
 .code-card {
   display: flex;
   flex-grow: 1;
+  flex-direction: column;
   justify-content: center;
   padding:1rem;
   width: 70%;
@@ -67,6 +68,46 @@ a {
   margin-top: 5%;
   margin-bottom: 5%;
 
+}
+
+.newP, .create{
+  text-align: center;  
+}
+
+.newP {
+  margin-top: 5%;
+}
+
+.title {
+  width: 70%;
+}
+
+.labelText, .newContent {
+  font-size: 20px;
+  margin-top: 2%;
+}
+
+.input-field {
+  margin-bottom: 5%;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  outline: none;
+}
+
+h1 {
+  font-size: 50px !important;
+}
+
+h2 {
+  font-size: 30px !important;
+  color:#5a86e4;
+}
+
+h3 {
+  font-size: 20px !important;
 }
 
 footer {

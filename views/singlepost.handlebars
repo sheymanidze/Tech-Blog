@@ -1,8 +1,52 @@
-<div class="column1">
-  <figure class="card code-card">
-    {{>postdetails post}}
+{{!-- <div {{>postdetails post}}
 
-    <h4>Comments</h4>
-    {{>comments post.comments}}
+  <h4>Comments</h4>
+  {{>comments post.comments}}
+  <div>
+    <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="/newcomment">Add Comment</a>
+  </div>
+
+</div> --}}
+
+{{!-- <div data-post="{{post.id}}">
+  <div class="column1">
+    <figure class="card code-card">
+      <div>
+        <a style="font-size: 25px;" href="/singlepost/{{post.id}}">{{post.title}}</a>
+        <br>
+        <p style="margin-bottom: 3%; margin-top: 3%;">{{post.content}}</p>
+        <h5>by {{user.username}}</h5>
+      </div>
+      <br>
+      <div>
+        <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="/newcomment">Add Comment</a>
+        <a style="color: rgb(215, 179, 221) !important; margin-left: 5%;" href="/comments">View All Comments</a>
+      </div>
+    </figure>
+  </div>
+
+</div> --}}
+
+<div class="post">
+  <figure class="card code-card">
+    <div>
+      <h3 style="color: #5a86e4; text-align:center;">{{title}}</h3>
+    </div>
+    <br>
+    <div>
+      <p style="text-align:center;">{{content}}</p>
+    </div>
+    <div>
+      <span>By: {{user.username}}</span>
+    </div>
+    <br>
+    <div>
+      <a style="margin-left: 75%; color: rgb(215, 179, 221);" href=" /home/post/{{id}}">{{comments}}</a>
+    </div>
+    <div>
+      <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="/newcomment">Add Comment</a>
+      <a style="color: rgb(215, 179, 221) !important; margin-left: 5%;" href="/comments">View All Comments</a>
+    </div>
+
   </figure>
 </div>

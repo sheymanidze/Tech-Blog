@@ -1,9 +1,9 @@
-const editFormHandler = async (event) => {
+const editPost = async (event) => {
   event.preventDefault();
-  const title = document.querySelector('#title').value;
+  const title = document.querySelector('#postTitle').value;
   const content = document.querySelector('#content').value;
 
-  const response = await fetch('/api/users/login', {
+  const response = await fetch(`/api/post/${id}`, {
     method: 'PUT',
     body: JSON.stringify({ title, content }),
     headers: { 'Content-Type': 'application/json' },
@@ -21,6 +21,6 @@ const editFormHandler = async (event) => {
 };
 
 document
-  .querySelector('.submit')
-  .addEventListener('submit', editFormHandler);
+  .querySelector('.edit-post')
+  .addEventListener('submit', editPost);
 

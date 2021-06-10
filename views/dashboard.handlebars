@@ -6,8 +6,9 @@
     {{#if post.length}}
     {{#each post as |post|}}
     {{>postdetails post}}
-    <a href="/post/edit/{{post.id}}"></a>
-    <input style="margin-left: 46%;" type="submit" value="Edit" class="submit" align="center" />
+    <a href="/post/edit/{{post.id}}">
+      <input style="margin-left: 46%; margin-top: 5%; margin-bottom: 5%;" type="submit" value="Edit" class="submit"
+        align="center" /></a>
     {{/each}}
     {{else}}
     <h2>You don't have any posts, please create a new one</h2>
