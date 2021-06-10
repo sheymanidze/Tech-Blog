@@ -110,6 +110,10 @@ h3 {
   font-size: 20px !important;
 }
 
+.post {
+  margin-top: 5%;
+}
+
 footer {
   text-align:center;
   /* position: absolute; */
