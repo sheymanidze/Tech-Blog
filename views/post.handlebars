@@ -4,15 +4,20 @@
     <figure class="card code-card">
       <div>
         <h2>{{post.title}}</h2>
+        <br>
         <p>{{post.content}}</p>
         <h5>by {{user.username}}</h5>
       </div>
+      <br>
       <div>
-        <a style="color: rgb(215, 179, 221) !important;" href="/newcomment">Add Comment</a>
-        <a style="color: rgb(215, 179, 221) !important;" href="/comments">View All Comments</a>
+        <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="/newcomment">Add Comment</a>
+        <a style="color: rgb(215, 179, 221) !important; margin-left: 5%;" href="/comments">View All Comments</a>
       </div>
     </figure>
   </div>
 
 </div>
 {{/each}}
+<div id="viewAllP" class="allPosts">
+  <a href="/all">View All Posts</a>
+</div>

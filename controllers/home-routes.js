@@ -23,7 +23,7 @@ router.get("/home", async (req, res) => {
       include: {
         model: User,
         attributes: ['username']
-      }, order: Sequelize.literal('rand()'), limit: 6
+      }, order: Sequelize.literal('rand()'), limit: 3
     }).then((encounters) => {
       const postRandomCards = []
       for (let i = 0; i < encounters.length; i++) {
@@ -62,6 +62,31 @@ router.get("/home", async (req, res) => {
     console.log(err);
   }
 });
+
+router.get('/all', async (req, res) => {
+  if (!req.session.user_id) {
+    res.redirect("/")
+  }
+  try {
+    const dbPostData = await Post.findAll({
+      include: {
+        model: User,
+        attributes: ['username']
+      },
+    });
+    const postPlain = dbPostData.map((post) => post.get({ plain: true }))
+
+
+    res.render('post', {
+      postArr: postPlain,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+
+});
+
 
 router.get('/newpost', (req, res) => {
   if (!req.session.user_id) {
