@@ -1,0 +1,32 @@
+<div class="post">
+  <figure class="card code-card">
+    <div>
+      <h3 style="color: #5a86e4; text-align:center;">{{title}}</h3>
+    </div>
+    <br>
+    <div>
+      <p style="text-align:center;">{{content}}</p>
+    </div>
+    <div>
+      <span>By: {{user.username}}</span>
+    </div>
+    <br>
+    <div style="margin-bottom: 3%;">
+      <h7>{{createdAt}}</h7>
+    </div>
+    <div>
+      <div>
+        <a style="margin-left: 75%; color: rgb(215, 179, 221);" href=" /api/post/{{id}}">{{comments}}</a>
+      </div>
+
+      <form data-comments="{{comments.id}}" class="comments-form">
+        <div class="input-field">
+          <textarea style="width: 75% !important; height: 50px !important; font-size: 100px !important;" class="comment"
+            id="comments" type="text" id="post-comment"></textarea>
+        </div>
+        <div>
+          <input style="margin-left: 40%;" id="comment" type="submit" value="Submit" class="submit"></input>
+        </div>
+      </form>
+  </figure>
+</div>

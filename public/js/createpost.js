@@ -1,34 +1,36 @@
 const createPost = async (event) => {
+  console.log("fired")
   console.log(event)
   console.log('createPost')
   event.preventDefault();
 
   const newTitle = document.querySelector('#post-title').value;
   const newPost = document.querySelector('#contentNew').value;
-  const response = await fetch(`/api/post/${id}`, {
+  if (newTitle && newPost) {
+    const response = await fetch('/api/post/create', {
 
-    method: 'POST',
-    body: JSON.stringify({
-      newTitle,
-      newPost
-    }),
-    headers: {
-      'Content-Type': 'application/json',
+      method: 'POST',
+      body: JSON.stringify({
+        title: newTitle,
+        content: newPost
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    console.log(response)
+    if (response.ok) {
+      document.location.replace('/dashboard')
+
+    } else {
+      alert(response.statusText);
     }
-  });
-  if (response.ok) {
-    fetch('/dashboard')
-      .then(
-        document.location.replace('/dashboard')
-      );
-  } else {
-    alert(response.statusText);
   }
 }
 
 document
-  .querySelector('.createPost')
-  .addEventListener('create', createPost)
+  .querySelector('#createBtn')
+  .addEventListener('click', createPost)
 
 
 

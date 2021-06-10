@@ -1,0 +1,11 @@
+<div>
+  {{#each comments as |comment|}}
+  <section>
+    {{!-- <h6>{{user.username}}</h6> --}}
+    {{!-- <h6>{{comments_text}}</h6> --}}
+    <h6>{{comment.username}}</h6>
+    <h6>{{comment.post_id}}</h6>
+    <h6>{{comment.comments_text}}</h6>
+  </section>
+  {{/each}}
+</div>

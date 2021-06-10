@@ -126,7 +126,11 @@ router.get('/dashboard', (req, res) => {
     .then(dbPostData => {
       console.log(dbPostData)
       const post = dbPostData.map(post => post.get({ plain: true }));
-      console.log(post)
+      console.log("post", post)
+      const comments = post.filter(post => post.comments)
+      console.log("comments", comments)
+      console.log("comments", comments[0].comments)
+      post.reverse();
       res.render('dashboard', {
         post,
         loggedIn: req.session.loggedIn
@@ -236,6 +240,15 @@ router.get('/edit/:id', (req, res) => {
     console.log(err);
     res.status(500).json(err)
   })
+});
+
+router.get('/newcomment', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/home');
+    return;
+  }
+  res.render("newcomment", {
+  });
 })
 
 
