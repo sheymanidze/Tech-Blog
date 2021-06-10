@@ -11,7 +11,7 @@ router.get('/home', (req, res) => {
 });
 
 // Creates a new comment
-router.post('/', async (req, res) => {
+router.post('/newcomment', async (req, res) => {
   if (!req.session.user_id) {
     res.redirect("/")
   }
@@ -35,16 +35,16 @@ router.delete('/:id', async (req, res) => {
   }
   try {
 
-    const postData = await Post.destroy({
+    const commentsData = await Comments.destroy({
       where: { id: req.params.id },
     });
 
     if (!postData) {
-      res.status(404).json({ message: 'No post found with that id!' });
+      res.status(404).json({ message: 'No comments found with that id!' });
       return;
     }
 
-    res.status(200).json(postData);
+    res.status(200).json(commentsData);
   } catch (err) {
     res.status(500).json(err);
   }

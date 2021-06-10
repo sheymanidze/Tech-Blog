@@ -71,6 +71,10 @@ font-family: 'Ubuntu', sans-serif;
   
 }
 
+#logout {
+  cursor: pointer;
+}
+
 .submit {
 cursor: pointer;
   border-radius: 5em;

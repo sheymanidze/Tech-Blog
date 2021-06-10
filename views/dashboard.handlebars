@@ -1,0 +1,14 @@
+<div class="column1">
+  <figure class="card code-card">
+    {{#if post.length}}
+    {{#each post as |post|}}
+    {{>postdetails post}}
+    <a href="/post/edit/{{post.id}}"></a>
+    <button class="edit">Edit</button>
+    {{/each}}
+    {{else}}
+    <h2>You don't have any posts, please create a new one</h2>
+    <a href="/newpost">Create</a>
+    {{/if}}
+  </figure>
+</div>

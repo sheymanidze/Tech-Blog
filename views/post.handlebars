@@ -1,7 +1,16 @@
-{{!-- {{#each postArr as |post|}} --}}
-<div class="column1">
-  <figure class="card code-card">
+{{#each postArr as |post|}}
+<div data-post="{{post.id}}">
+  <div class="column1">
+    <figure class="card code-card">
+      <div>
+        <h2>{{post.title}}</h2>
+        <p>{{post.content}}</p>
+        <h5>by {{user.username}}</h5>
+      </div>
+      <a href="/newcomment">Add Comment</a>
+      <a href="/comments">View All Comments</a>
+    </figure>
+  </div>
 
-  </figure>
 </div>
-{{!-- {{/each}} --}}
+{{/each}}
