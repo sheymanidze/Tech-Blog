@@ -1,4 +1,6 @@
-async function createPost(event) {
+const createPost = async (event) => {
+  console.log(event)
+  console.log('createPost')
   event.preventDefault();
 
   const newTitle = document.querySelector('#post-title').value;
@@ -15,16 +17,18 @@ async function createPost(event) {
     }
   });
   if (response.ok) {
-    fetch('/api/users/dashboard')
+    fetch('/dashboard')
       .then(
-        document.location.replace('/api/users/dashboard')
+        document.location.replace('/dashboard')
       );
   } else {
     alert(response.statusText);
   }
 }
 
-document.querySelector('.createPost').addEventListener('create', createPost)
+document
+  .querySelector('.createPost')
+  .addEventListener('create', createPost)
 
 
 

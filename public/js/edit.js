@@ -1,7 +1,11 @@
 const editPost = async (event) => {
+  // console.log(event.target.attributes[0].value)
+  console.log(event.target.getAttribute("data-post"))
+  console.log('editPost')
   event.preventDefault();
   const title = document.querySelector('#postTitle').value;
   const content = document.querySelector('#content').value;
+  const id = event.target.getAttribute("data-post")
 
   const response = await fetch(`/api/post/${id}`, {
     method: 'PUT',
@@ -10,9 +14,9 @@ const editPost = async (event) => {
   });
 
   if (response.ok) {
-    fetch('/api/users/dashboard')
+    fetch('/dashboard')
       .then(
-        document.location.replace('/api/users/dashboard')
+        document.location.replace('/dashboard')
       )
   } else {
     alert(response.statusText);
@@ -21,6 +25,6 @@ const editPost = async (event) => {
 };
 
 document
-  .querySelector('.edit-post')
+  .querySelector('.form-edit')
   .addEventListener('submit', editPost);
 

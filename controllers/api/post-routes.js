@@ -21,34 +21,6 @@ router.get('/all', async (req, res) => {
     res.status(500).json(err);
   }
 });
-// router.get('/home', (req, res) => {
-//   Post.findAll({
-//     attributes: [
-//       'id',
-//       'title',
-//       'content'
-//     ],
-//     include: [
-//       {
-//         model: Comments,
-//         attributes: ['id', 'user_id', 'post_id', 'comments_text'],
-//         include: {
-//           model: User,
-//           attributes: ['username']
-//         }
-//       },
-//       {
-//         model: User,
-//         attribute: ['username']
-//       }
-//     ]
-//   }).then(postData => res.json(postData))
-
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
 
 
 //post by id
@@ -109,7 +81,7 @@ router.get('/:id', async (req, res) => {
 
 
 //delete post
-router.delete('/:id', async (req, res) => {
+router.delete('/:id/delete', async (req, res) => {
   try {
     const postData = await Post.destroy({
       where: {
@@ -188,7 +160,8 @@ router.post('/create', (req, res) => {
 
 
 //edit post
-router.put('/edit/:id', (req, res) => {
+
+router.put('/:id', (req, res) => {
   Post.update({
     title: req.body.title,
     content: req.body.content

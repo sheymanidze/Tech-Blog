@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Comments } = require('../../models');
 
-router.get('/home', (req, res) => {
+router.get('/', (req, res) => {
   Comments.findAll({})
     .then(commentsData => res.json(commentsData))
     .catch(err => {

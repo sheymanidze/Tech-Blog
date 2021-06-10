@@ -1,5 +1,9 @@
 async function deletePost(event) {
+  console.log(event)
+
   event.preventDefault();
+
+  // const id = event.target.getAttribute("data-post")
 
   const response = await fetch(`/api/post/${id}`, {
     method: 'DELETE',
@@ -11,14 +15,14 @@ async function deletePost(event) {
     }
   });
   if (response.ok) {
-    alert('Post successfuly deleted')
-    fetch('/api/users/dashboard')
+    alert('Post is successfuly deleted')
+    fetch('/dashboard')
       .then(
-        document.location.replace('/api/users/dashboard')
+        document.location.replace('/dashboard')
       )
   } else {
     alert(response.statusText);
   }
 }
 
-document.querySelector('.submit').addEventListener('click', deletePost)
+document.querySelector('#deleteButton').addEventListener('click', deletePost)

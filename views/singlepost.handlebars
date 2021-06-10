@@ -1,4 +1,4 @@
-{{!-- <div {{>postdetails post}}
+{{!-- <div>{{>postdetails post}}
 
   <h4>Comments</h4>
   {{>comments post.comments}}
@@ -40,13 +40,17 @@
       <span>By: {{user.username}}</span>
     </div>
     <br>
-    <div>
-      <a style="margin-left: 75%; color: rgb(215, 179, 221);" href=" /home/post/{{id}}">{{comments}}</a>
+    <div style="margin-bottom: 3%;">
+      <h7>{{createdAt}}</h7>
     </div>
     <div>
-      <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="/newcomment">Add Comment</a>
-      <a style="color: rgb(215, 179, 221) !important; margin-left: 5%;" href="/comments">View All Comments</a>
-    </div>
+      <div>
+        <a style="margin-left: 75%; color: rgb(215, 179, 221);" href=" /home/post/{{id}}">{{comments}}</a>
+      </div>
+      <div>
+        <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="/newcomment">Add Comment</a>
+        <a style="color: rgb(215, 179, 221) !important; margin-left: 5%;" href="/comments">View All Comments</a>
+      </div>
 
   </figure>
 </div>

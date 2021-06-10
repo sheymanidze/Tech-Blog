@@ -7,13 +7,17 @@
     <div>
       <p style="text-align:center;">{{content}}</p>
     </div>
-    <div>
+    <div style="margin-top:5%;">
       <span>By: {{user.username}}</span>
     </div>
     <br>
-    <div>
-      <a style="margin-left: 75%; color: rgb(215, 179, 221);" href=" /home/post/{{id}}">{{comments}}</a>
+    <div style="margin-bottom: 3%;">
+      <h7>{{createdAt}}</h7>
     </div>
+    <div>
+      <div>
+        <a style="margin-left: 75%; color: rgb(215, 179, 221);" href="/api/post/{{id}}">{{comments.length}}</a>
+      </div>
 
   </figure>
 </div>
