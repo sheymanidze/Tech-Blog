@@ -7,8 +7,11 @@
     {{#each post as |post|}}
     {{>postdetails post}}
     <a href="/post/edit/{{post.id}}">
-      <input style="margin-left: 46%; margin-top: 5%; margin-bottom: 5%;" type="submit" value="Edit" class="submit"
+      <input style="margin-left: 46%; margin-top: 5%; margin-bottom: 2%;" type="submit" value="Edit" class="submit"
         align="center" /></a>
+    <a href="/post/edit/{{post.id}}">
+      <input style="margin-left: 45.5%; margin-bottom: 5%;" type="submit" value="Delete" class="submit"
+        id="deleteButton" align="center" /></a>
     {{/each}}
     {{else}}
     <h2>You don't have any posts, please create a new one</h2>

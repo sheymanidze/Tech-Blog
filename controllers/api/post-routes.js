@@ -51,8 +51,7 @@ router.get('/all', async (req, res) => {
 // });
 
 
-
-
+//post by id
 router.get('/:id', async (req, res) => {
   if (!req.session.user_id) {
     res.redirect("/")
@@ -110,7 +109,7 @@ router.get('/:id', async (req, res) => {
 
 
 //delete post
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const postData = await Post.destroy({
       where: {
