@@ -127,7 +127,7 @@ router.get('/dashboard', (req, res) => {
       //console.log(dbPostData)
       const post = dbPostData.map(post => post.get({ plain: true }));
 
-      //post.reverse();
+      post.reverse();
       res.render('dashboard', {
         post,
         loggedIn: req.session.loggedIn
