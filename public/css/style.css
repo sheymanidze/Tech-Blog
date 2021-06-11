@@ -114,6 +114,12 @@ h3 {
   margin-top: 5%;
 }
 
+.comments-form, .comments-all {
+  display: none;
+}
+
+
+
 footer {
   text-align:center;
   /* position: absolute; */

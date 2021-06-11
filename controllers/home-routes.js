@@ -196,13 +196,6 @@ router.get("/singlepost/:id", async (req, res) => {
 });
 
 //edit post
-// router.get('/edit/:id', (req, res) => {
-//   if (!req.session.user_id) {
-//     res.redirect("/")
-//   }
-//   res.render('postedit');
-// });
-
 router.get('/edit/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -244,8 +237,10 @@ router.get('/edit/:id', (req, res) => {
   })
 });
 
-router.get('/newcomment', (req, res) => {
-  if (req.session.loggedIn) {
+
+//add comment
+router.get('/addcomment', (req, res) => {
+  if (!req.session.loggedIn) {
     res.redirect('/home');
     return;
   }

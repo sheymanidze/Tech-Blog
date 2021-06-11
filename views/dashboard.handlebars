@@ -6,23 +6,31 @@
     {{#if post.length}}
     {{#each post as |post|}}
     {{>postdetails post}}
+
+
     {{!-- {{#each post.comments as |comment|}}
     {{comment.comments_text}}
     {{/each}} --}}
-    {{!-- {{#each post.comments as |comment|}}
-    {{comment.comments_text}}
-    {{/each}} --}}
+    <div class="comments">
+
+    </div>
+
 
     <a href="/edit/{{post.id}}">
       <input style="margin-left: 46%; margin-top: 5%; margin-bottom: 2%;" type="submit" value="Edit" class="submit"
         align="center" /></a>
-    <a href="/edit/{{post.id}}">
-      <input style="margin-left: 45.5%; margin-bottom: 5%;" type="submit" value="Delete" class="submit"
-        id="deleteButton" align="center" /></a>
+    <a href="#" data-post="{{post.id}}">
+      <input style="margin-left: 45.5%; margin-bottom: 5%;" type="submit" value="Delete" class="submit" id="deleteBtn"
+        align="center" /></a>
+
     {{/each}}
     {{else}}
-    <h2>You don't have any posts, please create a new one</h2>
-    <a href="/newpost">Create</a>
+    <div style="text-align: center !important;">
+      <h2>You don't have any posts, please create a new one</h2>
+    </div>
+    <a href="/newpost">
+      <input style="margin-left: 45.5%; margin-bottom: 5%; margin-top: 5%;" type="submit" value="Create" class="submit"
+        align="center" /></a>
     {{/if}}
   </div>
 </div>

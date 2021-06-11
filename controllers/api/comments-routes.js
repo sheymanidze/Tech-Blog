@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 // Creates a new comment
-router.post('/newcomment', async (req, res) => {
+router.post('/', async (req, res) => {
   if (!req.session.user_id) {
     res.redirect("/")
   }
@@ -19,14 +19,16 @@ router.post('/newcomment', async (req, res) => {
 
     const commentsData = await Comments.create({
       post_id: req.body.post_id,
-      comments_text: req.body.comments_text,
+      comments_text: req.body.comments,
       user_id: req.session.user_id
     });
     res.status(200).json(commentsData);
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });
+
 
 // delete comments
 router.delete('/:id', async (req, res) => {

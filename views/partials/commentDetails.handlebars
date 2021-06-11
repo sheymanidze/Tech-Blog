@@ -10,7 +10,16 @@
   {{/each}}
 </div> --}}
 
-{{!-- {{#each comments.comments as |comment|}}
-{{user.username}}
+{{!-- {{#each post.comments as |comment|}}
 {{comment.comments_text}}
 {{/each}} --}}
+
+<div class="comments">
+  {{#each this}}
+  <h7>{{user.username}}</h7>
+  {{!-- <h7>{{format_date createdAt}}</h7> --}}
+  <div>
+    <h5>{{comments_text}}</h5>
+  </div>
+  {{/each}}
+</div>

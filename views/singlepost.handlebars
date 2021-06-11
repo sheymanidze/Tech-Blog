@@ -1,33 +1,4 @@
-{{!-- <div>{{>postdetails post}}
-
-  <h4>Comments</h4>
-  {{>comments post.comments}}
-  <div>
-    <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="/newcomment">Add Comment</a>
-  </div>
-
-</div> --}}
-
-{{!-- <div data-post="{{post.id}}">
-  <div class="column1">
-    <figure class="card code-card">
-      <div>
-        <a style="font-size: 25px;" href="/singlepost/{{post.id}}">{{post.title}}</a>
-        <br>
-        <p style="margin-bottom: 3%; margin-top: 3%;">{{post.content}}</p>
-        <h5>by {{user.username}}</h5>
-      </div>
-      <br>
-      <div>
-        <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="/newcomment">Add Comment</a>
-        <a style="color: rgb(215, 179, 221) !important; margin-left: 5%;" href="/comments">View All Comments</a>
-      </div>
-    </figure>
-  </div>
-
-</div> --}}
-
-<div class="post">
+<div class="post" data-post="{{id}}">
   <figure class="card code-card">
     <div>
       <h3 style="color: #5a86e4; text-align:center;">{{title}}</h3>
@@ -45,12 +16,32 @@
     </div>
     <div>
       <div>
-        <a style="margin-left: 75%; color: rgb(215, 179, 221);" href=" /api/post/{{id}}">{{comments}}</a>
+        <a style="margin-left: 75%; color: rgb(215, 179, 221);" href=" /api/post/{{id}}">{{>commentDetails
+          post.comments}}</a>
+      </div>
+      <div class="comments-form" id="commentsForm{{id}}">
+        <div class="input-field">
+          <textarea style="width: 75% !important; height: 50px !important; font-size: 10px !important;" class="comment"
+            id="comments" type="text" id="post-comment"></textarea>
+        </div>
+        <div>
+          <input style="margin-left: 40%; margin-bottom: 3%;" id="comment" type="submit" value="Submit"
+            class="submit"></input>
+        </div>
+        </form>
+
       </div>
       <div>
-        <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="/newcomment">Add Comment</a>
-        <a style="color: rgb(215, 179, 221) !important; margin-left: 5%;" href="/comments">View All Comments</a>
+        <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="#" onclick="showComments({{id}})"
+          id="addcomments">Add
+          Comment</a>
       </div>
-
+      <div class="comments-all" id="commentsAll{{id}}">
+        <div>
+          <h4>{{>commentDetails comments}}</h4>
+        </div>
+      </div>
+      <a style="color: rgb(215, 179, 221) !important; margin-left: 5%;" href="#" onclick="showAllComments({{id}})">View
+        All Comments</a>
   </figure>
 </div>
