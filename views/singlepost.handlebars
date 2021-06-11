@@ -1,4 +1,4 @@
-<div class="post" data-post="{{id}}">
+<div class="post" data-post="{{post.id}}">
   <figure class="card code-card">
     <div>
       <h3 style="color: #5a86e4; text-align:center;">{{title}}</h3>
@@ -19,7 +19,7 @@
         <a style="margin-left: 75%; color: rgb(215, 179, 221);" href=" /api/post/{{id}}">{{>commentDetails
           post.comments}}</a>
       </div>
-      <div class="comments-form" id="commentsForm{{id}}">
+      <div class="comments-form" id="commentsForm{{post.id}}">
         <div class="input-field">
           <textarea style="width: 75% !important; height: 50px !important; font-size: 10px !important;" class="comment"
             id="comments" type="text" id="post-comment"></textarea>
@@ -32,16 +32,16 @@
 
       </div>
       <div>
-        <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="#" onclick="showComments({{id}})"
-          id="addcomments">Add
+        <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="#"
+          onclick="showComments({{post.id}})" id="addcomments">Add
           Comment</a>
       </div>
-      <div class="comments-all" id="commentsAll{{id}}">
+      <div class="comments-all" id="commentsAll{{post.id}}">
         <div>
           <h4>{{>commentDetails comments}}</h4>
         </div>
       </div>
-      <a style="color: rgb(215, 179, 221) !important; margin-left: 5%;" href="#" onclick="showAllComments({{id}})">View
-        All Comments</a>
+      <a style="color: rgb(215, 179, 221) !important;" href="#" onclick="showAllComments({{post.id}})">View All
+        Comments</a>
   </figure>
 </div>

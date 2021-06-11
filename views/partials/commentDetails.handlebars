@@ -1,25 +1,13 @@
-{{!-- <div>
-  {{#each comments as |comment|}}
-  <section> --}}
-    {{!-- <h6>{{user.username}}</h6> --}}
-    {{!-- <h6>{{comments_text}}</h6> --}}
-    {{!-- <h6>{{comment.username}}</h6>
-    <h6>{{comment.post_id}}</h6>
-    <h6>{{comment.comments_text}}</h6>
-  </section>
-  {{/each}}
-</div> --}}
-
-{{!-- {{#each post.comments as |comment|}}
-{{comment.comments_text}}
-{{/each}} --}}
-
-<div class="comments">
+<div class="comment">
   {{#each this}}
-  <h7>{{user.username}}</h7>
-  {{!-- <h7>{{format_date createdAt}}</h7> --}}
-  <div>
-    <h5>{{comments_text}}</h5>
+  <div class="oneComment">
+    <div>
+      <h5>{{comments_text}}</h5>
+    </div>
+    <div>
+      <h8>created by: {{user.username}}</h8>
+    </div>
   </div>
+  <br>
   {{/each}}
 </div>

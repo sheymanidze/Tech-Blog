@@ -31,11 +31,11 @@
       </div>
       <div class="comments-all" id="commentsAll{{post.id}}">
         <div>
-          <h4>{{>commentDetails comments}}</h4>
+          <h4>{{>commentDetails post.comments}}</h4>
         </div>
       </div>
-      <a style="color: rgb(215, 179, 221) !important; margin-left: 5%;" href="#"
-        onclick="showAllComments({{post.id}})">View All Comments</a>
+      <a style="color: rgb(215, 179, 221) !important;" href="#" onclick="showAllComments({{post.id}})">View All
+        Comments</a>
 
     </figure>
   </div>

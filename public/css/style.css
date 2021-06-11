@@ -118,7 +118,11 @@ h3 {
   display: none;
 }
 
-
+.oneComment{
+  border: solid 1px #c648d6;
+  border-radius: 3px;
+  box-shadow: 0 5px 10px #fcef7a;
+}
 
 footer {
   text-align:center;
