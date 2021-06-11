@@ -124,13 +124,10 @@ router.get('/dashboard', (req, res) => {
     ]
   })
     .then(dbPostData => {
-      console.log(dbPostData)
+      //console.log(dbPostData)
       const post = dbPostData.map(post => post.get({ plain: true }));
-      console.log("post", post)
-      const comments = post.filter(post => post.comments)
-      console.log("comments", comments)
-      console.log("comments", comments[0].comments)
-      post.reverse();
+
+      //post.reverse();
       res.render('dashboard', {
         post,
         loggedIn: req.session.loggedIn
@@ -182,7 +179,13 @@ router.get("/singlepost/:id", async (req, res) => {
   }
   try {
 
-    const postData = await Post.findByPk(req.params.id);
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username']
+        }]
+    })
     const singlePostData = postData.get({ plain: true });
     res.render('singlepost', {
       ...singlePostData,
