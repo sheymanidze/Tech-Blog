@@ -62,23 +62,6 @@ router.get('/:id', async (req, res) => {
 //   }
 // });
 
-// // Update a post
-// router.put('/edit', async (req, res) => {
-//   if (!req.session.user_id) {
-//     res.redirect("/")
-//   }
-//   try {
-
-//     const postData = await Post.update({
-//       title: req.body.title,
-//       content: req.body.content,
-//     });
-//     res.status(200).json(postData);
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
-
 
 //delete post
 router.delete('/:id/delete', async (req, res) => {
@@ -150,7 +133,12 @@ router.post('/create', (req, res) => {
   Post.create({
     user_id: req.session.user_id,
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      }],
   }).then(dbPostData => res.json(dbPostData))
     .catch(err => {
       console.log(err);

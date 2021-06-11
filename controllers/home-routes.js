@@ -91,11 +91,42 @@ router.get('/all', async (req, res) => {
 
 //new post
 router.get('/newpost', (req, res) => {
-  if (!req.session.user_id) {
-    res.redirect("/")
-  }
-  res.render('createpost');
+  Post.findAll({
+    where: {
+      user_id: req.session.user_id
+    },
+    attributes: [
+      'id',
+      'title',
+      'content'
+    ],
+    include: [
+      {
+        model: User,
+        attributes: ['username']
+      },
+      {
+        model: Comments,
+        attributes: ['id', 'user_id', 'post_id', 'comments_text'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      }
+    ]
+  })
+    .then(dbPostData => {
+      const post = dbPostData.map(post => post.get({ plain: true }));
+      res.render('createpost', {
+        post,
+        loggedIn: true
+      });
+    }).catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
+
 
 //dasboard
 router.get('/dashboard', (req, res) => {
@@ -106,7 +137,8 @@ router.get('/dashboard', (req, res) => {
     attributes: [
       'id',
       'title',
-      'content'
+      'content',
+      'createdAt'
     ],
     include: [
       {
@@ -137,39 +169,6 @@ router.get('/dashboard', (req, res) => {
       res.status(500).json(err);
     });
 });
-// router.get('/home', (req, res) => {
-//   Post.findAll({
-//     attributes: [
-//       'id',
-//       'title',
-//       'content'
-//     ],
-//     include: [
-//       {
-//         model: Comments,
-//         attributes: ['id', 'user_id', 'post_id', 'comments_text'],
-//         include: {
-//           model: User,
-//           attributes: ['username']
-//         }
-//       },
-//       {
-//         model: User,
-//         attribute: ['username']
-//       }
-//     ]
-//   }).then(postData => {
-//     const postAll = postData.map(post => post.get({ plain: true }));
-//     res.render('post', {
-//       postAll,
-//       loggedIn: req.session.loggedIn
-//     });
-
-//   }).catch(err => {
-//     console.log(err);
-//     res.status(500).json(err);
-//   });
-// });
 
 
 //view one post
