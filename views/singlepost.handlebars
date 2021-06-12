@@ -16,32 +16,27 @@
     </div>
     <div>
       <div>
-        <a style="margin-left: 75%; color: rgb(215, 179, 221);" href=" /api/post/{{id}}">{{>commentDetails
-          post.comments}}</a>
+
+        {{>commentDetails comments}}
+
       </div>
-      <div class="comments-form" id="commentsForm{{post.id}}">
+      <br>
+      <div class="comments-add" id="commentsAdd{{post.id}}">
+        <h4>Please leave a comment</h4>
+        <br>
         <div class="input-field">
-          <textarea style="width: 75% !important; height: 50px !important; font-size: 10px !important;" class="comment"
-            id="comments" type="text" id="post-comment"></textarea>
+          <textarea style="height: 50px !important; font-size: 10px !important;" class="comment" id="comments"
+            type="text" id="post-comment"></textarea>
         </div>
         <div>
           <input style="margin-left: 40%; margin-bottom: 3%;" id="comment" type="submit" value="Submit"
             class="submit"></input>
         </div>
-        </form>
+      </div>
 
-      </div>
-      <div>
-        <a style="color: rgb(215, 179, 221) !important; white-space:normal;" href="#"
-          onclick="showComments({{post.id}})" id="addcomments">Add
-          Comment</a>
-      </div>
-      <div class="comments-all" id="commentsAll{{post.id}}">
-        <div>
-          <h4>{{>commentDetails comments}}</h4>
-        </div>
-      </div>
-      <a style="color: rgb(215, 179, 221) !important;" href="#" onclick="showAllComments({{post.id}})">View All
-        Comments</a>
+
+
+
+
   </figure>
 </div>

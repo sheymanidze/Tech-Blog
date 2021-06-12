@@ -20,10 +20,21 @@ router.get("/home", async (req, res) => {
   }
   try {
     const dbPostData = await Post.findAll({
-      include: {
-        model: User,
-        attributes: ['username']
-      }, order: Sequelize.literal('rand()'), limit: 3
+      include: [
+        {
+          model: User,
+          attributes: ['username']
+        },
+        {
+          model: Comments,
+          attributes: ['id', 'user_id', 'post_id', 'comments_text'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        }
+      ],
+      order: Sequelize.literal('rand()'), limit: 3
     }).then((encounters) => {
       const postRandomCards = []
       for (let i = 0; i < encounters.length; i++) {
@@ -71,10 +82,20 @@ router.get('/all', async (req, res) => {
   }
   try {
     const dbPostData = await Post.findAll({
-      include: {
-        model: User,
-        attributes: ['username']
-      },
+      include: [
+        {
+          model: User,
+          attributes: ['username']
+        },
+        {
+          model: Comments,
+          attributes: ['id', 'user_id', 'post_id', 'comments_text'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        }
+      ]
     });
     const postPlain = dbPostData.map((post) => post.get({ plain: true }))
 
@@ -159,9 +180,11 @@ router.get('/dashboard', (req, res) => {
       //console.log(dbPostData)
       const post = dbPostData.map(post => post.get({ plain: true }));
 
+
       post.reverse();
       res.render('dashboard', {
         post,
+
         loggedIn: req.session.loggedIn
       });
     }).catch(err => {
@@ -183,7 +206,16 @@ router.get("/singlepost/:id", async (req, res) => {
         {
           model: User,
           attributes: ['username']
-        }]
+        },
+        {
+          model: Comments,
+          attributes: ['id', 'post_id', 'user_id', 'comments_text'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        }
+      ]
     })
     const singlePostData = postData.get({ plain: true });
     res.render('singlepost', {

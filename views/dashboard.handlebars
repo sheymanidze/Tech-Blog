@@ -11,15 +11,11 @@
     {{!-- {{#each post.comments as |comment|}}
     {{comment.comments_text}}
     {{/each}} --}}
-    <div class="comments">
-
-    </div>
-
 
     <a href="/edit/{{post.id}}">
       <input style="margin-left: 46%; margin-top: 5%; margin-bottom: 2%;" type="submit" value="Edit" class="submit"
         align="center" /></a>
-    <a href="#" data-post="{{post.id}}">
+    <a href="#/" data-post="{{post.id}}">
       <input style="margin-left: 45.5%; margin-bottom: 5%;" type="submit" value="Delete" class="submit" id="deleteBtn"
         align="center" /></a>
 
@@ -31,6 +27,23 @@
     <a href="/newpost">
       <input style="margin-left: 45.5%; margin-bottom: 5%; margin-top: 5%;" type="submit" value="Create" class="submit"
         align="center" /></a>
+    {{/if}}
+  </div>
+</div>
+
+<div class="userComments">
+  <h1>Your Current Comments</h1>
+</div>
+<div class="column1">
+  <div class="dasboard">
+    {{#if comments.length}}
+    {{#each post.comments as |comment|}}
+    {{>commentsDetails comments}}
+    {{/each}}
+    {{else}}
+    <div>
+      <h2>You did not leave any comments</h2>
+    </div>
     {{/if}}
   </div>
 </div>

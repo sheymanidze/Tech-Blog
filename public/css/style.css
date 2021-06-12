@@ -99,11 +99,14 @@ textarea {
 
 h1 {
   font-size: 50px !important;
+  text-align: center;
 }
 
 h2 {
   font-size: 30px !important;
   color:#5a86e4;
+  text-align: center;
+  
 }
 
 h3 {
