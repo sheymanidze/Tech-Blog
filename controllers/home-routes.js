@@ -114,7 +114,8 @@ router.get('/all', async (req, res) => {
 router.get('/newpost', (req, res) => {
   Post.findAll({
     where: {
-      user_id: req.session.user_id
+      user_id: req.session.user_id,
+      user_id: req.session.username,
     },
     attributes: [
       'id',
@@ -153,8 +154,10 @@ router.get('/newpost', (req, res) => {
 router.get('/dashboard', (req, res) => {
   Post.findAll({
     where: {
-      user_id: req.session.user_id
+      user_id: req.session.user_id,
+
     },
+
     attributes: [
       'id',
       'title',
@@ -177,9 +180,10 @@ router.get('/dashboard', (req, res) => {
     ]
   })
     .then(dbPostData => {
-      //console.log(dbPostData)
+
       const post = dbPostData.map(post => post.get({ plain: true }));
       const comments = post.filter(post => post.comments)
+      console.log("comments", comments[0].comments)
       post.reverse();
       res.render('dashboard', {
         post,

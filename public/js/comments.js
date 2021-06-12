@@ -1,7 +1,6 @@
 const addComments = async (event) => {
   const post_id = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute("data-post")
-  // console.log(event.target.attributes[0].value)
-  // console.log(event.target.getAttribute("data-post"))
+
   console.log('addComments')
   console.log('hello')
   event.preventDefault();
