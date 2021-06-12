@@ -41,6 +41,7 @@ function showComments(postId) {
 
 function showAllComments(postId) {
   document.getElementById(`commentsAll${postId}`).style.display = "inline"
+  document.getElementById(`hide${postId}`).style.display = "none"
 }
 
 
