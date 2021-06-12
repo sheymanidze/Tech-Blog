@@ -1,7 +1,7 @@
 const addComments = async (event) => {
+  console.log(event)
   const post_id = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute("data-post")
 
-  console.log('addComments')
   console.log('hello')
   event.preventDefault();
 
@@ -23,9 +23,11 @@ const addComments = async (event) => {
 
 };
 
-document
-  .querySelector('#comment')
-  .addEventListener('click', addComments);
+// document
+//   .querySelectorAll('.allPosts, .submit')
+//   .addEventListener('click', addComments);
+document.querySelectorAll(".allPosts .submit")
+  .forEach(ele => ele.addEventListener('click', addComments))
 
 
 function showComments(postId) {

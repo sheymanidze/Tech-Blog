@@ -1,5 +1,5 @@
 {{#each postArr as |post|}}
-<div data-post="{{post.id}}">
+<div class="allPosts" data-post="{{post.id}}">
   <div class="column1">
     <figure class="card code-card">
       <div>
@@ -19,8 +19,8 @@
             type="text" id="post-comment"></textarea>
         </div>
         <div>
-          <input style="margin-left: 40%; margin-bottom: 3%;" id="comment" type="submit" value="Submit"
-            class="submit"></input>
+          <input onclick="addComments()" style="margin-left: 40%; margin-bottom: 3%;" id="comment" type="submit"
+            value="Submit" class="submit"></input>
         </div>
       </div>
       <div>

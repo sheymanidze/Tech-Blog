@@ -1,35 +1,37 @@
 <div class="userPosts">
   <h1>Your Current Posts</h1>
 </div>
-<div class="column1">
-  <div class="card code-card">
+<div class="uPosts">
+  <div class="column1">
+    <div class="card code-card">
 
-    {{#if post.length}}
-    {{#each post as |post|}}
-    {{>postdetails post}}
+      {{#if post.length}}
+      {{#each post as |post|}}
+      {{>postdetails post}}
 
-    {{!-- {{>commentDetails post.comments}} --}}
-    {{!-- {{#each post.comments as |comment|}}
-    {{comment.comments_text}}
-    {{/each}} --}}
+      {{!-- {{>commentDetails post.comments}} --}}
+      {{!-- {{#each post.comments as |comment|}}
+      {{comment.comments_text}}
+      {{/each}} --}}
 
-    <a href="/edit/{{post.id}}">
-      <input style="margin-left: 40%; margin-top: 5%; margin-bottom: 2%;" type="submit" value="Edit" class="submit"
-        align="center" /></a>
-    <a href="#/" data-post="{{post.id}}">
-      <input style="margin-left: 39%; margin-bottom: 5%;" type="submit" value="Delete" class="submit" id="deleteBtn"
-        align="center" /></a>
+      <a href="/edit/{{post.id}}">
+        <input style="margin-left: 40%; margin-top: 5%; margin-bottom: 2%;" type="submit" value="Edit" class="submit"
+          align="center" /></a>
+      <a href="#/" data-post="{{post.id}}">
+        <input style="margin-left: 39%; margin-bottom: 5%;" type="submit" value="Delete" class="submit" id="deleteBtn"
+          align="center" /></a>
 
-    {{/each}}
-    {{else}}
-    <div style="text-align: center !important;">
-      <h2>You don't have any posts, please create a new one</h2>
+      {{/each}}
+      {{else}}
+      <div style="text-align: center !important;">
+        <h2>You don't have any posts, please create a new one</h2>
+      </div>
+      <a href="/newpost">
+        <input style="margin-left: 45.5%; margin-bottom: 5%; margin-top: 5%;" type="submit" value="Create"
+          class="submit" align="center" /></a>
+      {{/if}}
+
     </div>
-    <a href="/newpost">
-      <input style="margin-left: 45.5%; margin-bottom: 5%; margin-top: 5%;" type="submit" value="Create" class="submit"
-        align="center" /></a>
-    {{/if}}
-
   </div>
 </div>
 <br>

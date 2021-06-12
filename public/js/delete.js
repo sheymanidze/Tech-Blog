@@ -28,4 +28,6 @@ const deletePost = async (event) => {
   }
 }
 
-document.querySelector('#deleteBtn').addEventListener('click', deletePost)
+// document.querySelector('#deleteBtn').addEventListener('click', deletePost)
+document.querySelectorAll('.uPosts .submit')
+  .forEach(ele => ele.addEventListener('click', deletePost))
