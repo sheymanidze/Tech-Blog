@@ -2,7 +2,8 @@
   <h1>Your Current Posts</h1>
 </div>
 <div class="column1">
-  <div class="dasboard">
+  <div class="card code-card">
+
     {{#if post.length}}
     {{#each post as |post|}}
     {{>postdetails post}}
@@ -13,10 +14,10 @@
     {{/each}} --}}
 
     <a href="/edit/{{post.id}}">
-      <input style="margin-left: 46%; margin-top: 5%; margin-bottom: 2%;" type="submit" value="Edit" class="submit"
+      <input style="margin-left: 40%; margin-top: 5%; margin-bottom: 2%;" type="submit" value="Edit" class="submit"
         align="center" /></a>
     <a href="#/" data-post="{{post.id}}">
-      <input style="margin-left: 45.5%; margin-bottom: 5%;" type="submit" value="Delete" class="submit" id="deleteBtn"
+      <input style="margin-left: 39%; margin-bottom: 5%;" type="submit" value="Delete" class="submit" id="deleteBtn"
         align="center" /></a>
 
     {{/each}}
@@ -28,21 +29,24 @@
       <input style="margin-left: 45.5%; margin-bottom: 5%; margin-top: 5%;" type="submit" value="Create" class="submit"
         align="center" /></a>
     {{/if}}
+
   </div>
 </div>
-
+<br>
 <div class="userComments">
   <h1>Your Current Comments</h1>
 </div>
 <div class="column1">
-  <div class="dasboard">
+  <div class="card code-card">
     {{#if comments.length}}
-    {{#each post.comments as |comment|}}
-    {{>commentsDetails comments}}
-    {{/each}}
+
+    {{>commentDetails comments}}
+    <a href="#/">
+      <input style="margin-left: 39%; margin-bottom: 5%;" type="submit" value="Delete All" class="submit" id="deleteBtn"
+        align="center"></a>
     {{else}}
     <div>
-      <h2>You did not leave any comments</h2>
+      <h2 style="margin-bottom: 5%;">You did not leave any comments</h2>
     </div>
     {{/if}}
   </div>

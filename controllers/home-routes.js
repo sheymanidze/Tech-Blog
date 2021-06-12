@@ -179,12 +179,11 @@ router.get('/dashboard', (req, res) => {
     .then(dbPostData => {
       //console.log(dbPostData)
       const post = dbPostData.map(post => post.get({ plain: true }));
-
-
+      const comments = post.filter(post => post.comments)
       post.reverse();
       res.render('dashboard', {
         post,
-
+        comments,
         loggedIn: req.session.loggedIn
       });
     }).catch(err => {
