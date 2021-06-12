@@ -1,4 +1,4 @@
-<div class="post" data-post="{{post.id}}">
+<div class="post" data-post="{{id}}">
   <figure class="card code-card">
     <div>
       <h3 style="color: #5a86e4; text-align:center;">{{title}}</h3>
@@ -21,22 +21,21 @@
 
       </div>
       <br>
-      <div class="comments-add" id="commentsAdd{{post.id}}">
+      <div class="comments-add" id="commentsAdd{{id}}">
         <h4>Please leave a comment</h4>
         <br>
         <div class="input-field">
-          <textarea style="height: 50px !important; font-size: 10px !important;" class="comment" id="comments"
-            type="text" id="post-comment"></textarea>
+          <textarea style="height: 50px !important; font-size: 10px !important;" class="comment" id="comment-{{id}}"
+            type="text"></textarea>
         </div>
         <div>
-          <input click="addComments()" style="margin-left: 40%; margin-bottom: 3%;" id="comment" type="submit"
+          <input onclick="addComments({{id}})" style="margin-left: 40%; margin-bottom: 3%;" id="comment" type="submit"
             value="Submit" class="submit"></input>
         </div>
       </div>
 
 
-
-
-
   </figure>
 </div>
+
+<script src="/js/singlepostcom.js"></script>

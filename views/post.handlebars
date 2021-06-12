@@ -15,12 +15,14 @@
       <div class="comments-form" id="commentsForm{{post.id}}">
         <h4>Please leave a comment</h4>
         <div class="input-field">
-          <textarea style="height: 50px !important; font-size: 10px !important;" class="comment" id="comments"
-            type="text" id="post-comment"></textarea>
+          <textarea style="height: 50px !important; font-size: 10px !important;" class="comment"
+            id="comment-{{post.id}}" type="text"></textarea>
         </div>
         <div>
-          <input onclick="addComments()" style="margin-left: 40%; margin-bottom: 3%;" id="comment" type="submit"
-            value="Submit" class="submit"></input>
+          <input onclick="addComments(
+            {{post.id}}
+          )" style="margin-left:0; margin-bottom: 3%;" id="comment" type="submit" value="Submit"
+            class="submit"></input>
         </div>
       </div>
       <div>
@@ -48,3 +50,5 @@
 <div id="viewAllP" class="allPosts">
   <a href="/all">View All Posts</a>
 </div>
+
+<script src="/js/comments.js"></script>

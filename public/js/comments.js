@@ -1,24 +1,27 @@
-const addComments = async (event) => {
-  console.log(event)
-  const post_id = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute("data-post")
+const addComments = async (post_id) => {
+  //console.log(event)
+  //event.preventDefault();
+  if (true) {
+    //const post_id = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute("data-post")
 
-  console.log('hello')
-  event.preventDefault();
+    console.log(post_id)
+    //const postIdStr = JSON.stringify(post_id);
 
-  const comments = document.querySelector('#comments').value;
-  const postId = ({ post_id: post_id, comments: comments })
-  console.log(postId)
+    const comments = document.querySelector(`#comment-${post_id}`).value;
+    const postId = ({ post_id: post_id, comments: comments })
+    console.log(postId)
 
-  const response = await fetch('/api/comments/', {
-    method: 'POST',
-    body: JSON.stringify(postId),
-    headers: { 'Content-Type': 'application/json' },
-  });
+    const response = await fetch('/api/comments/', {
+      method: 'POST',
+      body: JSON.stringify(postId),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-  if (response.ok) {
-    document.location.reload()
-  } else {
-    alert(response.statusText);
+    if (response.ok) {
+      document.location.reload()
+    } else {
+      alert(response.statusText);
+    }
   }
 
 };
@@ -26,8 +29,10 @@ const addComments = async (event) => {
 // document
 //   .querySelectorAll('.allPosts, .submit')
 //   .addEventListener('click', addComments);
-document.querySelectorAll(".allPosts .submit")
-  .forEach(ele => ele.addEventListener('click', addComments))
+// document.querySelectorAll(".allPosts .submit")
+//   .forEach(ele => ele.addEventListener('click', function (event) {
+//     console.log(event)
+//   }))
 
 
 function showComments(postId) {
