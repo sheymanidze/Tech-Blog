@@ -183,7 +183,6 @@ router.get('/dashboard', (req, res) => {
 
       const post = dbPostData.map(post => post.get({ plain: true }));
       const comments = post.filter(post => post.comments)
-      console.log("comments", comments[0].comments)
       post.reverse();
       res.render('dashboard', {
         post,

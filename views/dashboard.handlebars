@@ -1,13 +1,16 @@
 <div class="userPosts">
   <h1>Your Current Posts</h1>
 </div>
-<div class="uPosts">
-  <div class="column1">
-    <div class="card code-card">
+
+<div class="column1">
+  <div class="card code-card">
+
+    <div class="dashboard">
 
       {{#if post.length}}
       {{#each post as |post|}}
       {{>postdetails post}}
+
 
       <a href="/edit/{{post.id}}">
         <input style="margin-left: 40%; margin-top: 5%; margin-bottom: 2%;" type="submit" value="Edit" class="submit"
@@ -27,5 +30,6 @@
 
     </div>
   </div>
+
 </div>
 <br>
