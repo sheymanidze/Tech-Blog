@@ -44,7 +44,6 @@ router.get("/home", async (req, res) => {
       console.log('thisPost', postRandomCards)
       res.render('post', {
         postArr: postRandomCards,
-        logged_in: req.session.user_id,
         user_id: req.session.username,
       });
     })
@@ -103,7 +102,7 @@ router.get('/all', async (req, res) => {
 
     res.render('post', {
       postArr: postPlain,
-      logged_in: req.session.user_id,
+
     });
   } catch (err) {
     console.log(err);
@@ -151,7 +150,7 @@ router.get('/newpost', (req, res) => {
         post,
         loggedIn: true,
         username: req.session.username,
-        logged_in: req.session.user_id,
+
       });
     }).catch(err => {
       console.log(err);
@@ -198,7 +197,6 @@ router.get('/dashboard', (req, res) => {
         post,
         comments,
         loggedIn: req.session.loggedIn,
-        logged_in: req.session.user_id,
       });
     }).catch(err => {
       console.log(err);
