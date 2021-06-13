@@ -131,6 +131,24 @@ h3 {
   margin-top: 3%;
 }
 
+#createBtn {
+  width: 100%;
+  margin-left: 0;
+}
+
+#card, #editBtn, #deleteBtn {
+  margin-left: 0;
+  width: 100%;
+}
+
+#editBtn  {
+  margin-top: 5%; 
+}
+
+#deleteBtn {
+  margin-top: 3%;
+}
+
 
 footer {
   text-align:center;

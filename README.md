@@ -25,7 +25,7 @@
      *There is an option on the bottom “View all post”
      *All posts contain title, content, username, who created it, and the date when the post was created
      *User can add comment or view all comments for each post
-     *By clicking on the one post user will be presented with current post only, where “add comment” and “View All Comments” will be available 
+     *By clicking on the one post user will be presented with current post only, where “add comment” and all comments for the post will be available 
 
    *Dashboard:
      *User can view their own posts, if they exist. If user did not create any, an option “Create new post” will be presented

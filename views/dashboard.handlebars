@@ -3,7 +3,7 @@
 </div>
 
 <div class="column1">
-  <div class="card code-card">
+  <div class="card code-card" id="card">
 
     <div class="dashboard">
 
@@ -13,11 +13,9 @@
 
 
       <a href="/edit/{{post.id}}">
-        <input style="margin-left: 40%; margin-top: 5%; margin-bottom: 2%;" type="submit" value="Edit" class="submit"
-          align="center" /></a>
+        <input type="submit" value="Edit" class="submit" id="editBtn" align="center" /></a>
       <a href="#/" data-post="{{post.id}}" class="dlete">
-        <input style="margin-left: 39%; margin-bottom: 5%;" type="submit" value="Delete" class="submit" id="deleteBtn"
-          align="center" /></a>
+        <input type="submit" value="Delete" class="submit" id="deleteBtn" align="center" /></a>
       {{/each}}
       {{else}}
       <div style="text-align: center !important;">
