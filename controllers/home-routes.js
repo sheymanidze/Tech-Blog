@@ -103,7 +103,7 @@ router.get('/all', async (req, res) => {
 
     res.render('post', {
       postArr: postPlain,
-      loggedIn: req.session.loggedIn,
+      logged_in: req.session.user_id,
     });
   } catch (err) {
     console.log(err);
@@ -151,7 +151,7 @@ router.get('/newpost', (req, res) => {
         post,
         loggedIn: true,
         username: req.session.username,
-
+        logged_in: req.session.user_id,
       });
     }).catch(err => {
       console.log(err);
@@ -165,7 +165,7 @@ router.get('/dashboard', (req, res) => {
   Post.findAll({
     where: {
       user_id: req.session.user_id,
-      loggedIn: req.session.loggedIn,
+
     },
 
     attributes: [
@@ -198,6 +198,7 @@ router.get('/dashboard', (req, res) => {
         post,
         comments,
         loggedIn: req.session.loggedIn,
+        logged_in: req.session.user_id,
       });
     }).catch(err => {
       console.log(err);
