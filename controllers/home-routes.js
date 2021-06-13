@@ -44,6 +44,7 @@ router.get("/home", async (req, res) => {
       console.log('thisPost', postRandomCards)
       res.render('post', {
         postArr: postRandomCards,
+        logged_in: req.session.user_id,
         user_id: req.session.username,
       });
     })
@@ -54,25 +55,25 @@ router.get("/home", async (req, res) => {
 });
 
 
-router.get("/home", async (req, res) => {
-  if (!req.session.user_id) {
-    res.redirect("/")
-  }
-  try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] }
-    });
-    console.log(userData)
-    const userArr = userData.map((user) => user.get({ plain: true }));
-    console.log(userArr)
-    res.render('home', {
-      user: userArr,
-      loggedIn: true
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
+// router.get("/home", async (req, res) => {
+//   if (!req.session.user_id) {
+//     res.redirect("/")
+//   }
+//   try {
+//     const userData = await User.findAll({
+//       attributes: { exclude: ['password'] }
+//     });
+//     console.log(userData)
+//     const userArr = userData.map((user) => user.get({ plain: true }));
+//     console.log(userArr)
+//     res.render('home', {
+//       user: userArr,
+//       loggedIn: true
+//     });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 
 //view all posts
@@ -102,6 +103,7 @@ router.get('/all', async (req, res) => {
 
     res.render('post', {
       postArr: postPlain,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -122,26 +124,34 @@ router.get('/newpost', (req, res) => {
       'title',
       'content'
     ],
-    include: [
-      {
-        model: User,
-        attributes: ['username']
-      },
-      {
-        model: Comments,
-        attributes: ['id', 'user_id', 'post_id', 'comments_text'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      }
-    ]
+    include: [User, Comments]
+    //   {
+    //     model: User,
+    //     attributes: ['username']
+    //   },
+    //   {
+    //     model: Comments,
+    //     attributes: ['id', 'user_id', 'post_id', 'comments_text'],
+    //     include: {
+    //       model: User,
+    //       attributes: ['username']
+    //     }
+    //   }
+    // ]
   })
     .then(dbPostData => {
       const post = dbPostData.map(post => post.get({ plain: true }));
+      console.log(post)
+      //const { post: { user } = {} } = req;
+      //const { user: { user_id } = {} } = req;
+      // const { user: { username } = {} } = req;
+      // console.log(username)
       res.render('createpost', {
+        //user_id,
         post,
-        loggedIn: true
+        loggedIn: true,
+        username: req.session.username,
+
       });
     }).catch(err => {
       console.log(err);
@@ -155,7 +165,7 @@ router.get('/dashboard', (req, res) => {
   Post.findAll({
     where: {
       user_id: req.session.user_id,
-
+      loggedIn: req.session.loggedIn,
     },
 
     attributes: [
@@ -187,7 +197,7 @@ router.get('/dashboard', (req, res) => {
       res.render('dashboard', {
         post,
         comments,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
       });
     }).catch(err => {
       console.log(err);
@@ -223,6 +233,7 @@ router.get("/singlepost/:id", async (req, res) => {
     res.render('singlepost', {
       ...singlePostData,
       loggedIn: req.session.loggedIn,
+
     });
   } catch (err) {
     console.log(err)
@@ -301,6 +312,16 @@ router.get('/login', (req, res) => {
     return;
   }
   res.render('login')
-})
+});
+
+//logout
+router.get('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  res.render("homepage")
+});
 
 module.exports = router;

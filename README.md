@@ -40,7 +40,7 @@
 
    *Log Out
      *After user click on the logout button, entering page will be presented
-     *User will be automatically signed out when idle on the page for more than 3 mins
+     *User will be automatically signed out when idle on the page for more than 5 mins
 
 
  # Deployment of application

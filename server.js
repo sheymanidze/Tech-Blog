@@ -12,11 +12,14 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-
+const hour = 300000
 
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  cookie: {
+    maxAge: 300000,
+    expires: new Date(Date.now() + hour),
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
