@@ -9,11 +9,13 @@ body {
   margin: 0;
 }
 
-/* body {
-  background-image: url("../img/background.jpeg");
-  background-size: cover;
-  background-position: center;
-} */
+#error {
+  text-align: center;
+}
+
+.navbar-light, .navbar-toggler {
+  outline: none !important;
+}
 
 .column1 {
   flex:1;
