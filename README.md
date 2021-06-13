@@ -71,7 +71,7 @@
 <img src="./public/img/signup.png" alt="Enter page" width = "500"/>
 
    ### Home page with random 3 posts
-<img src="./public/img/random.png" alt="Enter page" width = "500"/>
+<img src="./public/img/random_3.png" alt="Enter page" width = "500"/>
 
    ### Home page with all posts, opened comments, add comment area
 <img src="./public/img/mix.png" alt="Enter page" width = "500"/>
@@ -93,3 +93,13 @@
 
 
  # Future Developments
+
+ *Forgot password. In case if user will forget the password, the application will be able to send an email for a registered user to update the password
+
+ *Social Media sign in/sign up. It will be available for a user to make log in or register process easier
+
+ *Delete comments. Dashboard will contain user’s comments and option to edit or delete them
+
+ *Options to upload post related photos or videos will be added
+
+ *Profile page will be added. Users will be able to update personal information, upload image for avatar, write description about themselves.
