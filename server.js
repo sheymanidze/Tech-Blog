@@ -29,32 +29,10 @@ const sess = {
 
 app.use(session(sess));
 
-//will automatically logout after
-//1)
-//app.use(session({secret:"Key",cookie:{maxAge:600000}}))
-
-//2)
-// app.use(session({
-//   secret: config.sessionKey,
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: {
-//       maxAge: 600 * 1000
-//   }
-// }));
-
-//3)
-// app.use(function(req, res, next){
-//   req.setTimeout(500000, function(){
-//       // call back function is called when request timed out.
-//   });
-//   next();
-// });
-
-
-//4)npm install connect-timeout need to be installed
-// var timeout = require('connect-timeout');
-// app.use(timeout('100s'));
+app.use(function (req, res, next) {
+  res.locals.session = req.session;
+  next();
+});
 const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
