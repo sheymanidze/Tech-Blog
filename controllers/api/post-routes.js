@@ -2,9 +2,8 @@ const router = require("express").Router();
 const { Post, Comments, User } = require('../../models');
 
 
-// gets all posts and all its database columns
+// gets all posts 
 router.get('/all', async (req, res) => {
-  // If there is no session user id, redirects to the login page and blocks access
   if (!req.session.user_id) {
     res.redirect("/")
   }
@@ -50,7 +49,6 @@ router.delete('/:id', async (req, res) => {
     const postData = await Post.destroy({
       where: {
         id: req.params.id,
-        //user_id: req.session.user_id,
       },
     });
 
@@ -150,44 +148,5 @@ router.put('/:id', (req, res) => {
       res.status(500).json(err)
     });
 });
-// router.get('/edit/:id', (req, res) => {
-//   Post.findOne({
-//     where: {
-//       id: req.params.id
-//     },
-//     attributes: [
-//       'id',
-//       'title',
-//       'content'
-//     ],
-//     include: [
-//       {
-//         model: User,
-//         attributes: ['username']
-//       },
-//       {
-//         model: Comments,
-//         attributes: ['id', 'user_id', 'post_id', 'comments_text'],
-//         include: {
-//           model: User,
-//           attributes: ['username']
-//         }
-//       }
-//     ]
-//   }).then(dbPostData => {
-//     if (!dbPostData) {
-//       res.status(404).json({ message: 'No post found with that id' });
-//       return;
-//     }
-//     const post = dbPostData.get({ plain: true });
-//     res.render('postedit', {
-//       post,
-//       loggedIn: true
-//     });
-//   }).catch(err => {
-//     console.log(err);
-//     res.status(500).json(err);
-//   });
-// });
 
 module.exports = router

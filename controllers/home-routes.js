@@ -10,6 +10,7 @@ router.get("/", (req, res) => {
 
   }
   res.render("homepage", {
+
   });
 });
 
@@ -45,6 +46,7 @@ router.get("/home", async (req, res) => {
       res.render('post', {
         postArr: postRandomCards,
         user_id: req.session.username,
+        loggedIn: req.session.loggedIn,
       });
     })
   } catch (err) {
@@ -52,27 +54,6 @@ router.get("/home", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
-// router.get("/home", async (req, res) => {
-//   if (!req.session.user_id) {
-//     res.redirect("/")
-//   }
-//   try {
-//     const userData = await User.findAll({
-//       attributes: { exclude: ['password'] }
-//     });
-//     console.log(userData)
-//     const userArr = userData.map((user) => user.get({ plain: true }));
-//     console.log(userArr)
-//     res.render('home', {
-//       user: userArr,
-//       loggedIn: true
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
 
 
 //view all posts
@@ -98,10 +79,9 @@ router.get('/all', async (req, res) => {
       ]
     });
     const postPlain = dbPostData.map((post) => post.get({ plain: true }))
-
-
     res.render('post', {
       postArr: postPlain,
+      loggedIn: req.session.loggedIn,
 
     });
   } catch (err) {
@@ -124,32 +104,13 @@ router.get('/newpost', (req, res) => {
       'content'
     ],
     include: [User, Comments]
-    //   {
-    //     model: User,
-    //     attributes: ['username']
-    //   },
-    //   {
-    //     model: Comments,
-    //     attributes: ['id', 'user_id', 'post_id', 'comments_text'],
-    //     include: {
-    //       model: User,
-    //       attributes: ['username']
-    //     }
-    //   }
-    // ]
   })
     .then(dbPostData => {
       const post = dbPostData.map(post => post.get({ plain: true }));
-      console.log(post)
-      //const { post: { user } = {} } = req;
-      //const { user: { user_id } = {} } = req;
-      // const { user: { username } = {} } = req;
-      // console.log(username)
       res.render('createpost', {
-        //user_id,
         post,
-        loggedIn: true,
         username: req.session.username,
+        loggedIn: req.session.loggedIn,
 
       });
     }).catch(err => {
@@ -273,7 +234,7 @@ router.get('/edit/:id', (req, res) => {
     const post = dbPostData.get({ plain: true });
     res.render('postedit', {
       post,
-      loggedIn: true
+      loggedIn: req.session.loggedIn,
     })
   }).catch(err => {
     console.log(err);
@@ -289,6 +250,7 @@ router.get('/addcomment', (req, res) => {
     return;
   }
   res.render("newcomment", {
+    loggedIn: req.session.loggedIn,
   });
 })
 
@@ -313,14 +275,6 @@ router.get('/login', (req, res) => {
   res.render('login')
 });
 
-//logout
-router.get('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  }
-  res.render("homepage")
-});
+
 
 module.exports = router;
